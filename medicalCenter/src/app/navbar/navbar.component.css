@@ -43,3 +43,22 @@
         font-size: 15px;
     }
 }
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #224c91;
+    border: 2px solid #224c91;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #152e57;
+    border-color: #224c91;
+}
