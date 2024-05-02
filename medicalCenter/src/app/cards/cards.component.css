@@ -20,6 +20,8 @@
     max-width: 100%; /* Ancho máximo del 100% */
     height: auto; /* Altura automática para mantener la proporción */
     display: block; /* Eliminar espacio adicional */
+    align-items: center;
+    margin: 2px auto;
 }
 
 .overlay {
@@ -93,6 +95,8 @@
 }
 
 #product-cards h6 span button:hover {
-    background-color: #2e1700;
+    background-color: #0f0a37;
     color: white;
+    border-color: #0f0a37;
+    
 }
