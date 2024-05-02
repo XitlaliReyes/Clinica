@@ -13,6 +13,13 @@
     box-shadow: 0 0 3px black;
     border-radius: 10px;
     cursor: pointer;
+    position: relative; /* Agregado para el posicionamiento de overlay */
+}
+
+#product-cards .card img {
+    max-width: 100%; /* Ancho máximo del 100% */
+    height: auto; /* Altura automática para mantener la proporción */
+    display: block; /* Eliminar espacio adicional */
 }
 
 .overlay {
