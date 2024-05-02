@@ -1,1 +1,60 @@
-<p>citas works!</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form [formGroup]="appointmentForm" (ngSubmit)="submitForm()">
+                <!-- Nombre completo del paciente -->
+                <div class="form-group">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre completo del paciente</mat-label>
+                        <input matInput formControlName="patientName" required>
+                        <mat-error
+                            *ngIf="appointmentForm.get('patientName').invalid && (appointmentForm.get('patientName').dirty || appointmentForm.get('patientName').touched)">
+                            El nombre del paciente es requerido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Nombre del doctor que atenderá -->
+                <div class="form-group">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre del doctor</mat-label>
+                        <input matInput formControlName="doctorName" required>
+                        <mat-error
+                            *ngIf="appointmentForm.get('doctorName').invalid && (appointmentForm.get('doctorName').dirty || appointmentForm.get('doctorName').touched)">
+                            El nombre del doctor es requerido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Día de la cita -->
+                <div class="form-group">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Día de la cita</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="appointmentDate" required>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error
+                            *ngIf="appointmentForm.get('appointmentDate').invalid && (appointmentForm.get('appointmentDate').dirty || appointmentForm.get('appointmentDate').touched)">
+                            La fecha de la cita es requerida
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Padecimientos generales -->
+                <div class="form-group">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Padecimientos generales</mat-label>
+                        <textarea matInput formControlName="generalConditions" required></textarea>
+                        <mat-error
+                            *ngIf="appointmentForm.get('generalConditions').invalid && (appointmentForm.get('generalConditions').dirty || appointmentForm.get('generalConditions').touched)">
+                            Los padecimientos generales son requeridos
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button type="submit" class="btn btn-primary" [disabled]="appointmentForm.invalid">Registrar
+                    cita</button>
+            </form>
+        </div>
+    </div>
+</div>
