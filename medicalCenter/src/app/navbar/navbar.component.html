@@ -28,8 +28,8 @@
         </ul>
     </div>
     <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Dr. Shaun Murphy..." aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <input class="form-control me-2" type="search" placeholder="Dr. Shaun Murphy..." #buscarTexto (keyup.enter)="buscarUnDoctor(buscarTexto.value)" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="buscarUnDoctor(buscarTexto.value)" type="submit">Buscar</button>
     </form>
     <div class="icons">
         <img src="../../assets/image/user.png" alt="" width="20px">

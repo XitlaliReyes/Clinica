@@ -10,9 +10,11 @@ import { RouterModule, Router} from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  
-  // buscarUnDoctor(nombreh: string){
-  //   this.router.navigate(['/buscador',nombreh]);
-  // }
+
+  constructor(private router: Router) { }
+
+  buscarUnDoctor(nombre: string){
+    this.router.navigate(['/buscador',nombre]);
+  }
 
 }
