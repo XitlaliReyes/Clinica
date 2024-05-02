@@ -1,0 +1,17 @@
+<h1 class="text-center">Medicos <small>RUS PV</small></h1>
+<div class="card-group row row-cols-1 row-cols-lg-3 g-4">
+    @for (d of misDoctores; track d; let i = $index) {
+        <div class="col1">
+            <div class="card h-100">
+                <img src="{{d.img}}" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{d.nombre}}</h5>
+                    <p class="card-text">{{d.titulo}} (<small class="text-muted">{{d.universidad}}</small>)</p>
+                    <p class="card-text">{{d.especialidad}} (<small class="text-muted">{{d.lugarEspecialidad}}</small>)</p>
+                    <!-- <p class="card-text"><small class="text-muted">{{d.aparicion}}</small></p> -->
+                </div>
+                <a [routerLink]="['/cita',i]" class="mb-3 btn btn-outline-primary btn-block">Ajendar Cita</a>
+            </div>
+        </div>
+    }
+</div>
