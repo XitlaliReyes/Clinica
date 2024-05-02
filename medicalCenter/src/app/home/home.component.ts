@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { BannerComponent } from '../banner/banner.component';
+import { CardsComponent } from '../cards/cards.component';
+import { GaleriaComponent } from '../galeria/galeria.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [BannerComponent, CardsComponent, GaleriaComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
