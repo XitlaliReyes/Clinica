@@ -1,6 +1,6 @@
 import { Doctor } from "./doctor";
 
-export const misdoctores: Doctor[] = [
+export const DOCTORES: Doctor[] = [
     {
         nombre: "Dr. María García",
         img: "ruta/a/imagen1.jpg",
