@@ -1,0 +1,56 @@
+
+.smaller-circle {
+    width: 13rem; 
+    height: 13rem 
+  }
+  
+  .img-thumbnail {
+    border: 0; 
+  }
+.container {
+    padding-top: 3rem;
+  }
+  
+h2 {
+    font-size: 2.25rem; 
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 6rem; 
+    border-bottom: 0.3rem solid rgb(50, 101, 211);
+  }
+  
+.con-style {
+    background-color: #f8f9fa;
+    border-radius: 1rem; 
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover{
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    border-bottom: 5px solid #007bff;
+  }
+.txt{
+    text-align: justify;
+}
+.txt1{
+    font-size: larger;
+    font-weight: bold;
+}
+.txt2{
+    border-bottom: 1px solid #007bff;
+    
+}
+.card-title, .card-text {
+    color: #333;
+  }
+  
+.mb-4 {
+    margin-bottom: 1rem; 
+}
+  
+.no-style {
+    border: none;
+    background-color: transparent;
+  }
+  
