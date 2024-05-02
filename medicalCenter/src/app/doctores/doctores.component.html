@@ -1,17 +1,22 @@
-<h1 class="text-center">Medicos <small>RUS PV</small></h1>
-<div class="card-group row row-cols-1 row-cols-lg-3 g-4">
-    @for (d of misDoctores; track d; let i = $index) {
-        <div class="col1">
-            <div class="card h-100">
-                <img src="{{d.img}}" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{d.nombre}}</h5>
-                    <p class="card-text">{{d.titulo}} (<small class="text-muted">{{d.universidad}}</small>)</p>
-                    <p class="card-text">{{d.especialidad}} (<small class="text-muted">{{d.lugarEspecialidad}}</small>)</p>
-                    <!-- <p class="card-text"><small class="text-muted">{{d.aparicion}}</small></p> -->
+<div class="container">
+    <br>
+    <h1 class="text-center">Medicos <small>RUS PV</small></h1><br>
+    
+    <div class="card-group row row-cols-1 row-cols-lg-3 g-5">
+        @for (d of misDoctores; track d; let i = $index) {
+            <a class="medicos" [routerLink]="['/medico',i]"> <!-- falta la implementacion de medico, para que abra mas informacion sobre el medico seleccionado -->
+                <div>
+                    <div>
+                        <img src="{{d.img}}" class="card-img-top" alt="imgdoc">
+                        <div>
+                            <br><h5>{{d.nombre}}</h5>
+                            <p><span>Titulo:</span> {{d.titulo}} (<small class="text-muted">{{d.universidad}}</small>)</p>
+                            <p><span>Especialidad:</span> {{d.especialidad}} (<small class="text-muted">{{d.lugarEspecialidad}}</small>)</p>
+                        </div>
+                        <a [routerLink]="['/medico',i]" class="mb-3 btn btn-outline-success btn-block">Ajendar Cita</a>
+                    </div>
                 </div>
-                <a [routerLink]="['/cita',i]" class="mb-3 btn btn-outline-primary btn-block">Ajendar Cita</a>
-            </div>
-        </div>
-    }
+            </a>
+        }
+    </div>
 </div>

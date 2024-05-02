@@ -1,0 +1,22 @@
+.container{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.medi{
+    padding: 20px;
+    border: none;
+}
+
+.medicos{
+    color: black;
+    text-decoration: none;
+}
+
+.medicos:hover{
+    background-color: rgba(0, 0, 0, 0.027);
+}
+
+span{
+    font-weight: 500;
+}
