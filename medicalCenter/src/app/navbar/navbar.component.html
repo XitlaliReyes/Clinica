@@ -15,10 +15,6 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/home']">Inicio</a>
             </li>
-            <!-- Header -->
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']">Informacion</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/doctores']">Doctores</a>
             </li>
@@ -30,15 +26,16 @@
             </li>
         </ul>
     </div>
+    <div class="icons">
+        <a [routerLink]="['/reporte-cita']" title="Mis citas">
+            <img src="../../assets/image/user.png" alt="User Img" width="25px">
+        </a>
+        <!-- Por lo pronto no tienen funcionalidad (y no se si la tengan) asi que estan comentados por si llegan a tener funcionalidad -->
+        <!-- <img src="../../assets/image/heart.png" alt="" width="20px">
+        <img src="../../assets/image/add.png" alt="" width="24px"> -->
+    </div>
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Dr. Shaun Murphy..." #buscarTexto (keyup.enter)="buscarUnDoctor(buscarTexto.value)" aria-label="Search">
         <button class="btn btn-outline-success" (click)="buscarUnDoctor(buscarTexto.value)" type="submit">Buscar</button>
     </form>
-    <div class="icons">
-        <a [routerLink]="['/reporte-cita']" title="Mis citas">
-            <img src="../../assets/image/user.png" alt="User Img" width="20px">
-        </a>
-        <img src="../../assets/image/heart.png" alt="" width="20px">
-        <img src="../../assets/image/add.png" alt="" width="24px">
-    </div>
 </nav>
