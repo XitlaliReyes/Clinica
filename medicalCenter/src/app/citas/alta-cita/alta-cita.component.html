@@ -2,38 +2,45 @@
     <h3>Agendar Cita</h3><br>
     <p>
         <span>Fecha y hora:</span>
-        <input type="date" class="form-control" [(ngModel)]="cita.fechayhora"> 
+        <input type="date" class="form-control" [(ngModel)]="cita.fechayhora">
         <!-- Se implementara un calendario con un mejor diseño, al igual que para seleccionar la hora -->
+        <!-- TODO: Para el calendario intenta utilizar los componentes de Material Angular  -->
     </p>
     <p>
         <span>Nombre:</span>
-        <input type="text" class="form-control" [(ngModel)]="cita.nombre"> 
+        <input type="text" class="form-control" [(ngModel)]="cita.nombre">
     </p>
-    
+
     <p>
         <span>Teléfono:</span>
-        <input type="text" class="form-control" [(ngModel)]="cita.telefono"> 
+        <input type="text" class="form-control" [(ngModel)]="cita.telefono">
     </p>
     <p>
         <span>Doctor</span>
-        <select [(ngModel)]="cita.doctor"  class="form-select" aria-label="Default select example">
+        @if (porParametro) {
+
+        <select class="form-select" aria-label="Default select example" disabled>
+            <option value="{{cita.doctor}}" selected>{{cita.doctor}}</option>
+        </select>
+
+        }@else {
+        <select [(ngModel)]="cita.doctor" class="form-select" aria-label="Default select example">
             @for (doc of doctores; track $index){
-            <option value="{{doc.nombre}}">{{doc.nombre}}</option>
+            <option value="{{doc.nombre}}" >{{doc.nombre}}</option>
             }
         </select>
+        }
     </p>
 
     @for (d of doctores; track $index) {
-        @if(cita.doctor==d.nombre){
-            <img class="doc" [src]="'../' + d.img" alt="img">
-            <p style="text-align: center;">Especialidad: {{d.especialidad}}</p>
-        }
-    } 
+    @if(cita.doctor==d.nombre){
+    <img class="doc" [src]="'../' + d.img" alt="img">
+    <p style="text-align: center;">Especialidad: {{d.especialidad}}</p>
+    }
+    }
 
     <p style="text-align: center;">
         <button type="button" class="btn btn-success" (click)="this.nuevaCita()">Guardar</button>
     </p>
-    
-</div>
 
- 
+</div>

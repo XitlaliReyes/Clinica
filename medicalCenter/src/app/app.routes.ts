@@ -12,6 +12,7 @@ export const routes: Routes = [
     {path: 'acerca', component: AcercaComponent},
     {path: 'doctores',component: DoctoresComponent},
     {path: 'alta-cita',component: AltaCitaComponent},
+    {path: 'alta-cita/:nombre',component: AltaCitaComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
