@@ -1,0 +1,15 @@
+#container {
+    margin-top: 50px;
+    padding: 30px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3{
+    text-align: center;
+}
+
+.doc{
+    width: 100%;
+}

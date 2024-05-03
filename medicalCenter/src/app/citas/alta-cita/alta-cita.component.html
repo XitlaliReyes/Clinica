@@ -1,0 +1,39 @@
+<div id="container">
+    <h3>Agendar Cita</h3><br>
+    <p>
+        <span>Fecha y hora:</span>
+        <input type="date" class="form-control" [(ngModel)]="cita.fechayhora"> 
+        <!-- Se implementara un calendario con un mejor diseño, al igual que para seleccionar la hora -->
+    </p>
+    <p>
+        <span>Nombre:</span>
+        <input type="text" class="form-control" [(ngModel)]="cita.nombre"> 
+    </p>
+    
+    <p>
+        <span>Teléfono:</span>
+        <input type="text" class="form-control" [(ngModel)]="cita.telefono"> 
+    </p>
+    <p>
+        <span>Doctor</span>
+        <select [(ngModel)]="cita.doctor"  class="form-select" aria-label="Default select example">
+            @for (doc of doctores; track $index){
+            <option value="{{doc.nombre}}">{{doc.nombre}}</option>
+            }
+        </select>
+    </p>
+
+
+    <p>
+        <button type="button" class="btn btn-success" (click)="this.nuevaCita()">Guardar</button>
+    </p>
+    @for (d of doctores; track $index) {
+        @if(cita.doctor==d.nombre){
+            <img class="doc" [src]="'../' + d.img" alt="img">
+            <p>Especialidad: {{d.especialidad}}</p>
+        }
+    } 
+    
+</div>
+
+ 
