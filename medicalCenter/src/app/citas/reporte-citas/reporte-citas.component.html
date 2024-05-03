@@ -1,1 +1,18 @@
-<p>reporte-citas works!</p>
+<h1>Citas pendientes:</h1>
+
+@if (citas.length > 0) {
+<div class="list-group">
+    @for (cita of citas; track cita) {
+    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+            <small>Fecha de cita: {{cita.fechayhora}}</small>
+        </div>
+        <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
+        <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
+    </a>
+    }
+</div>
+}@else {
+    <p class="text-muted" style="font-size: 24px; text-align: center;">No hay citas pendientes.</p>
+}

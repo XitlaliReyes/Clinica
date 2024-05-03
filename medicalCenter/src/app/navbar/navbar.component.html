@@ -4,7 +4,7 @@
             width="50px"> Hospital RUS
         PV</a>
 
-    <!-- Boton cuan do esta responsivo -->
+    <!-- Boton cuando esta responsivo -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span><img src="../../assets/image/menu.png" alt="" width="30px"></span>
     </button>
@@ -35,7 +35,9 @@
         <button class="btn btn-outline-success" (click)="buscarUnDoctor(buscarTexto.value)" type="submit">Buscar</button>
     </form>
     <div class="icons">
-        <img src="../../assets/image/user.png" alt="" width="20px">
+        <a [routerLink]="['/reporte-cita']" title="Mis citas">
+            <img src="../../assets/image/user.png" alt="User Img" width="20px">
+        </a>
         <img src="../../assets/image/heart.png" alt="" width="20px">
         <img src="../../assets/image/add.png" alt="" width="24px">
     </div>
