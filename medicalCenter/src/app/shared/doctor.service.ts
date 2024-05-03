@@ -17,8 +17,9 @@ export class DoctorService {
   getUnDoctor(id: number): Doctor {
     return this.misdoctores[id];
   }
-  
+
   searchUnDoctor(nombre: string): number {
+
     return this.misdoctores.findIndex(doctor => doctor.nombre === nombre);
   }    
 }

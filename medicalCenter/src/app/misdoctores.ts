@@ -63,7 +63,7 @@ export const DOCTORES: Doctor[] = [
     },
     {
         cedula: "11314632",
-        nombre: "Dr. Carmen Sánchez Gutierrez",
+        nombre: "Dra. Carmen Sánchez Gutierrez",
         img: "../assets/image/img7.jpg",
         titulo: "Médico Cirujano",
         universidad: "Universidad Autónoma de Madrid",

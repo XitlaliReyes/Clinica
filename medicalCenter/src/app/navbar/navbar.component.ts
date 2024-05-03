@@ -14,7 +14,9 @@ export class NavbarComponent {
   constructor(private router: Router) { }
 
   buscarUnDoctor(nombre: string){
-    this.router.navigate(['/buscador',nombre]);
+
+
+    this.router.navigate(['/buscador', nombre]);
   }
 
 }
