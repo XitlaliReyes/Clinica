@@ -1,0 +1,31 @@
+<div class="container">
+    <br>
+    <h1 class="text-center">Medicos <small>RUS PV</small></h1><br>
+    
+    <div class="card-group row row-cols-1 row-cols-lg-1 g-5 ">
+
+        <!-- <a class="medicos" [routerLink]="['/medico',i]"> -->
+                <div>
+                    <div>
+                        <img src="{{doctor.img}}" class="card-img-top" alt="imgdoc">
+                        <div>
+                            <br><h5>{{doctor.nombre}}</h5>
+                            <p><span>Cedula:</span> {{doctor.cedula}}</p>
+                            <p><span>Titulo:</span> {{doctor.titulo}} (<small class="text-muted">{{doctor.universidad}}</small>)</p>
+                            <p><span>Especialidad:</span> {{doctor.especialidad}} (<small class="text-muted">{{doctor.lugarEspecialidad}}</small>)</p>
+                            <div>
+
+                                <span>Áreas de Experiencia:</span>
+                                <ul>
+                                    <p *ngFor="let area of doctor.areasExperiencia">{{area}}</p>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        <a [routerLink]="['/alta-cita', doctor.nombre]" class="mb-3 btn btn-outline-success btn-block">Agendar Cita</a>
+                    </div>
+                </div>
+            <!-- </a> -->
+        
+    </div>
+</div>
