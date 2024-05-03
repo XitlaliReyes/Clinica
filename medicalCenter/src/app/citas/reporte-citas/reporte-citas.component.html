@@ -3,14 +3,33 @@
 @if (citas.length > 0) {
 <div class="list-group">
     @for (cita of citas; track cita) {
-    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
-            <small>Fecha de cita: {{cita.fechayhora}}</small>
-        </div>
-        <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
-        <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
-    </a>
+        @if (fechaPosterior(cita.fechayhora) ) {
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                    <small>Fecha de cita: {{cita.fechayhora}}</small>
+                </div>
+                <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
+                <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
+            </a>
+        }
+    }
+</div>
+
+<h1>Citas pasadas:</h1>
+
+<div class="list-group">
+    @for (cita of citas; track cita) {
+        @if (!fechaPosterior(cita.fechayhora) ) {
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                    <small>Fecha de cita: {{cita.fechayhora}}</small>
+                </div>
+                <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
+                <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
+            </a>
+        }
     }
 </div>
 }@else {
