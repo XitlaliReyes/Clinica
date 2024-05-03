@@ -23,16 +23,16 @@
         </select>
     </p>
 
-
-    <p>
-        <button type="button" class="btn btn-success" (click)="this.nuevaCita()">Guardar</button>
-    </p>
     @for (d of doctores; track $index) {
         @if(cita.doctor==d.nombre){
             <img class="doc" [src]="'../' + d.img" alt="img">
-            <p>Especialidad: {{d.especialidad}}</p>
+            <p style="text-align: center;">Especialidad: {{d.especialidad}}</p>
         }
     } 
+
+    <p style="text-align: center;">
+        <button type="button" class="btn btn-success" (click)="this.nuevaCita()">Guardar</button>
+    </p>
     
 </div>
 
