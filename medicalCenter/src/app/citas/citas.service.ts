@@ -29,7 +29,8 @@ export class CitasService {
 
   nuevaCita(): Cita{
     return{
-      fechayhora : new Date(),
+      fecha : new Date(),
+      hora: '',
       nombre: '',
       telefono: '',
       costo: 0,

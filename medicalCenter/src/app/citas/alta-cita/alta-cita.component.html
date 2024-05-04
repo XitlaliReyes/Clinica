@@ -1,10 +1,32 @@
 <div id="container">
     <h3>Agendar Cita</h3><br>
     <p>
-        <span>Fecha y hora:</span>
-        <input type="date" class="form-control" [(ngModel)]="cita.fechayhora">
+        <span>Fecha y hora: </span>
+        
+        <p-calendar 
+        [(ngModel)]="cita.fecha" 
+        [iconDisplay]="'input'" 
+        [showIcon]="true" 
+        inputId="icondisplay" />
+
+        <p-dropdown [options]="horariosDisponibles" [(ngModel)]="cita.hora"></p-dropdown>
+        <!-- Prototipo para el manejo de horas, ya que se deben manejar las citas por horarios Especificos
+            y bien definidos, al tratarse de una consulta medica -->
+
+        <!-- <p-calendar 
+        [(ngModel)]="cita.hora" 
+        [iconDisplay]="'input'" 
+        [showIcon]="true" 
+        [timeOnly]="true" 
+        inputId="templatedisplay">
+            <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+                <i class="pi pi-user pointer-events-none" (click)="clickCallBack($event)"></i>
+            </ng-template>
+        </p-calendar> -->
+
         <!-- Se implementara un calendario con un mejor diseño, al igual que para seleccionar la hora -->
         <!-- TODO: Para el calendario intenta utilizar los componentes de Material Angular  -->
+
     </p>
     <p>
         <span>Nombre:</span>

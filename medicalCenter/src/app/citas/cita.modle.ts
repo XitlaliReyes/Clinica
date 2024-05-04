@@ -1,5 +1,6 @@
 export interface Cita{
-    fechayhora: Date;
+    fecha: Date;
+    hora: string;
     nombre: string;
     telefono: string;
     costo: number;

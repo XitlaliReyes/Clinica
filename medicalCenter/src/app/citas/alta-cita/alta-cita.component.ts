@@ -4,11 +4,14 @@ import { Doctor } from '../../doctor';
 import { CitasService } from '../citas.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-alta-cita',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ButtonModule, CalendarModule, DropdownModule],
   templateUrl: './alta-cita.component.html',
   styleUrl: './alta-cita.component.css'
 })
@@ -37,5 +40,17 @@ export class AltaCitaComponent {
     this.citasService.agregarCita(this.cita);
     this.cita = this.citasService.nuevaCita();
   }
+
+  horariosDisponibles: string[] = [
+    '10:00 - 10:30 AM',
+    '10:30 - 11:00 AM',
+    '11:00 - 11:30 AM',
+    '11:30 - 12:00 PM',
+    '12:00 - 12:30 PM',
+    '12:30 - 1:00 PM',
+    '1:00 - 1:30 PM',
+    '1:30 - 2:00 PM',
+];
+
 
 }
