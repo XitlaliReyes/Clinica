@@ -4,7 +4,6 @@
     
     <div class="card-group row row-cols-1 row-cols-lg-1 g-5 ">
 
-        <!-- <a class="medicos" [routerLink]="['/medico',i]"> -->
                 <div>
                     <div>
                         <img src="{{doctor.img}}" class="card-img-top" alt="imgdoc">
@@ -22,10 +21,13 @@
                             </div>
                             
                         </div>
-                        <a [routerLink]="['/alta-cita', doctor.nombre]" class="mb-3 btn btn-outline-success btn-block">Agendar Cita</a>
+                        <div class="botones">
+                        <a [routerLink]="['/doctores']" class="btn btn-outline-danger btn-block">Regresar</a>
+                        <a [routerLink]="['/alta-cita', doctor.nombre]" class="btn btn-outline-success btn-block">Agendar Cita</a>
+                        </div>
                     </div>
                 </div>
-            <!-- </a> -->
+                
         
     </div>
 </div>
