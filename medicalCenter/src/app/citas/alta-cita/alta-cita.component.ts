@@ -7,20 +7,27 @@ import { ActivatedRoute } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-alta-cita',
   standalone: true,
-  imports: [FormsModule, ButtonModule, CalendarModule, DropdownModule],
+  imports: [FormsModule, ButtonModule, CalendarModule, DropdownModule, InputNumberModule, FloatLabelModule, CommonModule],
   templateUrl: './alta-cita.component.html',
   styleUrl: './alta-cita.component.css'
 })
 export class AltaCitaComponent {
   cita!: Cita;
+  consultas!: Cita[];
   doctores!: Doctor[];
   porParametro: boolean = false;
+  valor= false;
 
-  constructor(private citasService: CitasService, public activatedRoute: ActivatedRoute){}
+  constructor(private citasService: CitasService, public activatedRoute: ActivatedRoute){
+    this.consultas = this.citasService.getCitas();
+  }
   
   ngOnInit(){
     this.cita = this.citasService.nuevaCita();
@@ -50,7 +57,7 @@ export class AltaCitaComponent {
     '12:30 - 1:00 PM',
     '1:00 - 1:30 PM',
     '1:30 - 2:00 PM',
-];
+  ];
 
 
 }

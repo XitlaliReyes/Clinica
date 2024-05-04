@@ -1,68 +1,85 @@
-<div id="container">
-    <h3>Agendar Cita</h3><br>
-    <p>
-        <span>Fecha y hora: </span>
-        
-        <p-calendar 
-        [(ngModel)]="cita.fecha" 
-        [iconDisplay]="'input'" 
-        [showIcon]="true" 
-        inputId="icondisplay" />
+<h3>Agendar Cita</h3>
 
-        <p-dropdown [options]="horariosDisponibles" [(ngModel)]="cita.hora"></p-dropdown>
-        <!-- Prototipo para el manejo de horas, ya que se deben manejar las citas por horarios Especificos
-            y bien definidos, al tratarse de una consulta medica -->
+<div [ngClass]="{ 'con-valor': cita.doctor, 'sin-valor': !cita.doctor }"> 
+<!-- Si el doctor ya tiene un valor asignado entonces se aplicara un diseño si no tiene se aplicara otro -->
+    <div>
+        <p>
+            <span>Doctor</span>
+            @if (porParametro) {
 
-        <!-- <p-calendar 
-        [(ngModel)]="cita.hora" 
-        [iconDisplay]="'input'" 
-        [showIcon]="true" 
-        [timeOnly]="true" 
-        inputId="templatedisplay">
-            <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
-                <i class="pi pi-user pointer-events-none" (click)="clickCallBack($event)"></i>
-            </ng-template>
-        </p-calendar> -->
+            <select class="form-select" aria-label="Default select example" disabled>
+                <option value="{{cita.doctor}}" selected>{{cita.doctor}}</option>
+            </select>
 
-        <!-- Se implementara un calendario con un mejor diseño, al igual que para seleccionar la hora -->
-        <!-- TODO: Para el calendario intenta utilizar los componentes de Material Angular  -->
-
-    </p>
-    <p>
-        <span>Nombre:</span>
-        <input type="text" class="form-control" [(ngModel)]="cita.nombre">
-    </p>
-
-    <p>
-        <span>Teléfono:</span>
-        <input type="text" class="form-control" [(ngModel)]="cita.telefono">
-    </p>
-    <p>
-        <span>Doctor</span>
-        @if (porParametro) {
-
-        <select class="form-select" aria-label="Default select example" disabled>
-            <option value="{{cita.doctor}}" selected>{{cita.doctor}}</option>
-        </select>
-
-        }@else {
-        <select [(ngModel)]="cita.doctor" class="form-select" aria-label="Default select example">
-            @for (doc of doctores; track $index){
-            <option value="{{doc.nombre}}" >{{doc.nombre}}</option>
+            }@else {
+            <select [(ngModel)]="cita.doctor" class="form-select" aria-label="Default select example">
+                @for (doc of doctores; track $index){
+                <option value="{{doc.nombre}}" >{{doc.nombre}}</option>
+                }
+            </select>
             }
-        </select>
+        </p> 
+        <p>
+            <span>Fecha y hora: </span>
+            
+            <p-calendar 
+            [(ngModel)]="cita.fecha" 
+            [iconDisplay]="'input'" 
+            [showIcon]="true" 
+            inputId="icondisplay"
+            dateFormat="dd/mm/yy"
+             />
+             
+            <!-- Prototipo para el manejo de horas, ya que se deben manejar las citas por horarios Especificos
+                y bien definidos, al tratarse de una consulta medica -->
+            <p-dropdown [options]="horariosDisponibles" [(ngModel)]="cita.hora"></p-dropdown>
+
+
+            <!-- Validacion para que no se pueda seleccionar un horario ocupado -->
+            @for (con of consultas; track cita) {
+                <!-- <h1>Funciona 1</h1> -->
+                @if(cita.doctor==con.doctor){
+                    <!-- <h1>Funciona 2</h1> -->
+                    <!-- <p>{{cita.fecha}}</p>
+                    <p>{{con.fecha}}</p> -->
+                    @if((cita.fecha | date) == (con.fecha | date)){
+                        <!-- <p>{{cita.hora}}</p> -->
+                        <!-- <h1>Funciona 3</h1> -->
+                        @if(cita.hora==con.hora){
+                        <h3>Este horario no esta disponible por favor selecciona otro</h3>
+                        }
+                    } 
+                }
+            }
+
+        </p>
+        <p>
+            <span>Nombre:</span>
+            <input type="text" class="form-control" [(ngModel)]="cita.nombre">
+        </p>
+
+        <p>
+            <span>Teléfono:</span>
+            <input type="text" class="form-control" [(ngModel)]="cita.telefono">
+        </p>
+        <!-- <p-floatLabel>
+            <p-inputNumber inputId="integeronly" [(ngModel)]="cita.telefono" />
+            <label for="number-input"> Telefono</label>
+        </p-floatLabel> -->
+        
+
+        <p style="text-align: center;">
+            <button type="button" class="btn btn-success" (click)="this.nuevaCita()">Guardar</button>
+        </p>
+    </div>
+
+    <div>
+        @for (d of doctores; track $index) {
+            @if(cita.doctor==d.nombre){
+            <img class="doc" [src]="'../' + d.img" alt="img">
+            <p style="text-align: center;">Especialidad: {{d.especialidad}}</p>
+            }
         }
-    </p>
-
-    @for (d of doctores; track $index) {
-    @if(cita.doctor==d.nombre){
-    <img class="doc" [src]="'../' + d.img" alt="img">
-    <p style="text-align: center;">Especialidad: {{d.especialidad}}</p>
-    }
-    }
-
-    <p style="text-align: center;">
-        <button type="button" class="btn btn-success" (click)="this.nuevaCita()">Guardar</button>
-    </p>
+    </div>
 
 </div>
