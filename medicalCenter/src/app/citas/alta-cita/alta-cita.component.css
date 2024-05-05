@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
 .con-valor {
     margin-top: 50px;
-=======
-#container {
-    margin-top: 10px;
->>>>>>> Stashed changes
     padding: 30px;
     width: 100%;
     margin-left: auto;
@@ -26,11 +21,7 @@
 }
 
 h3{
-<<<<<<< Updated upstream
     margin-top: 50px;
-=======
-    color: #2c65c0;
->>>>>>> Stashed changes
     text-align: center;
     font-size: 40px;
     font-weight: bold;
