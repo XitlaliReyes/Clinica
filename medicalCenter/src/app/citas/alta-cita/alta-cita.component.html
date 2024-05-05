@@ -1,4 +1,18 @@
+<<<<<<< Updated upstream
 <h3>Agendar Cita</h3>
+=======
+<div id="container">
+    <h3>Agendar Cita</h3>
+    <hr class="linea"><br>
+    <p>
+        <span>Fecha y hora: </span>
+        
+        <p-calendar 
+        [(ngModel)]="cita.fecha" 
+        [iconDisplay]="'input'" 
+        [showIcon]="true" 
+        inputId="icondisplay" />
+>>>>>>> Stashed changes
 
 <div [ngClass]="{ 'con-valor': cita.doctor, 'sin-valor': !cita.doctor }"> 
 <!-- Si el doctor ya tiene un valor asignado entonces se aplicara un diseño si no tiene se aplicara otro -->
@@ -100,6 +114,7 @@
         </p>
     </div>
 
+<<<<<<< Updated upstream
     <div>
         @for (d of doctores; track $index) {
             @if(cita.doctor==d.nombre){
@@ -140,5 +155,10 @@
         }
         
     </div>
+=======
+    <p style="text-align: center;">
+        <button type="button" class="btn" (click)="this.nuevaCita()">Guardar</button>
+    </p>
+>>>>>>> Stashed changes
 
 </div>

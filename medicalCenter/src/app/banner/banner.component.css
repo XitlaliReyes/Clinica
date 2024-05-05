@@ -12,7 +12,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .home .img{
-    flex: 1 1 400px;
+    flex: 1 1 380px;
     animation: floatAnimation 3s infinite alternate;
 }
 .home .img img{
@@ -24,7 +24,7 @@
     100% { transform: translateY(0); }
 }
 .home .content{
-    flex: 1 1 400px;
+    flex: 1 1 500px;
     margin-left: 60px;
 }
 .content h3{
