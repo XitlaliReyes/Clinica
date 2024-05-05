@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Doctor } from '../doctor';
 import { DoctorService } from '../shared/doctor.service';
 import { UndoctorComponent } from "../undoctor/undoctor.component";
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
+import { AlertService } from '../alerts/alert.service';
 
 @Component({
     selector: 'app-search',
@@ -11,8 +13,8 @@ import { ActivatedRoute } from '@angular/router';
     styleUrl: './search.component.css',
     imports: [UndoctorComponent]
 })
-export class SearchComponent {
-
+export class SearchComponent implements OnInit{
+  alertaMostrada=false;
   nombred: string = "";
   indice: number = 0;
 
@@ -28,21 +30,23 @@ export class SearchComponent {
     areasExperiencia: []
   };
 
-  constructor(private doctorService: DoctorService, private activatedRoute: ActivatedRoute) { 
-    
+constructor(
+    private doctorService: DoctorService, private activatedRoute: ActivatedRoute, private alertService: AlertService 
+) {}
+
+ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      // console.log("Estoy en el search");
-      // console.log(params);
-      this.nombred = params['nombred'];
-      
-      this.indice = this.doctorService.searchUnDoctor(this.nombred);
-      if(this.indice != -1){
-
-        this.miDoctor = this.doctorService.getUnDoctor(this.indice);
-      }
+        this.nombred = params['nombred'];
+        this.indice = this.doctorService.searchUnDoctor(this.nombred);
+        if (this.indice === -1 && !this.alertaMostrada) { 
+          this.alertService.mostrarAlerta('Error', `No se encontraron resultados para ${this.nombred}`, 'error');
+          this.alertaMostrada = true;
+        } else {
+          this.miDoctor = this.doctorService.getUnDoctor(this.indice);
+        }
     });
-  }
-
+}
 
   
+    
 }
