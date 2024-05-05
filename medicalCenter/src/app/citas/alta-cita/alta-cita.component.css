@@ -1,3 +1,7 @@
+.container~*{
+    margin-top: 10px;
+}
+
 .con-valor {
     margin-top: 50px;
     padding: 30px;

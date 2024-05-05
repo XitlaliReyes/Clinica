@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormateaFechaPipe implements PipeTransform {
 
-  transform(fechaTransformar: Date): string {
+  transform(fechaTransformar: any): string {
+    fechaTransformar = new Date(fechaTransformar).toISOString();
     return fechaTransformar.toString().split('T')[0].replace(/-/g, '/');
   }
 

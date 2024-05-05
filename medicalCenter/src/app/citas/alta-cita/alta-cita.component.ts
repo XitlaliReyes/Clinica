@@ -90,11 +90,12 @@ export class AltaCitaComponent {
       !this.cita.fecha ||
       !this.cita.hora ||
       !this.cita.nombre ||
-      !this.cita.telefono
+      !this.cita.telefono ||
+      this.existeAlerta(document.getElementById('AlertaDiv'))
     ) {
       Swal.fire(
-        '¡Complete el formulario!',
-        'Por favor complete todos los campos antes de guardar la cita.',
+        '¡Formulario invalido!',
+        'Por favor rellente todos los campos correctamente antes de guardar la cita.',
         'warning'
       );
       return;
@@ -135,4 +136,19 @@ export class AltaCitaComponent {
   }
 
   estafechallena(dia: Date): any {}
+
+  existeAlerta(elementoHTML: any): boolean {
+    return elementoHTML.children.length > 0;
+  }
+
+  validacionesTelefono(inputTelefono: any): boolean {
+    return inputTelefono.value.length !== 10 || !/^[0-9]+$/.test(inputTelefono.value);
+    // Solo se permiten numeros y la longitud debe ser de 10
+  }
+
+  validacionesNombre(inputNombre: any): boolean {
+    return !/^[a-zA-Z\s]+$/.test(inputNombre.value);
+    // Solo se permiten letras y espacios
+  }
+  
 }

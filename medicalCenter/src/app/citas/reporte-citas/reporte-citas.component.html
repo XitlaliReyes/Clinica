@@ -18,7 +18,11 @@
         @if (fechaPosterior(cita.fecha) && fechasFiltro === undefined ) {
         <a class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <h5 class="mb-1">
+                    Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span>
+                    <br>
+                    Costo de consulta: <span class="text-cost">{{cita.costo}}</span>
+                </h5>
                 <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
             </div>
             <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
@@ -29,7 +33,11 @@
 
         <a href="#" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <h5 class="mb-1">
+                    Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span>
+                    <br>
+                    Costo de consulta: <span class="text-cost">{{cita.costo}}</span>
+                </h5>
                 <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
             </div>
             <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
@@ -50,7 +58,11 @@
         @if (!fechaPosterior(cita.fecha) && fechasFiltro === undefined) {
         <a href="#" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <h5 class="mb-1">
+                    Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span>
+                    <br>
+                    Costo de consulta: <span class="text-cost">{{cita.costo}}</span>
+                </h5>
                 <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
             </div>
             <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
@@ -59,7 +71,11 @@
         }@else if (!fechaPosterior(cita.fecha) && entreRangos(fechasFiltro, cita.fecha) && fechasFiltro !== undefined){
         <a href="#" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <h5 class="mb-1">
+                    Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span>
+                    <br>
+                    Costo de consulta: <span class="text-cost">{{cita.costo}}</span>
+                </h5>
                 <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
             </div>
             <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
