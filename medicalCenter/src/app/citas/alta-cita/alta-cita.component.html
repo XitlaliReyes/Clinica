@@ -2,45 +2,6 @@
 
     <h3>Agendar Cita</h3>
     
-    <!-- Validacion para que no se pueda seleccionar un horario ocupado -->
-    <div id="AlertaDiv">
-        @for (con of consultas; track cita) {
-        <!-- <h1>Funciona 1</h1> -->
-        @if(cita.doctor==con.doctor){
-        <!-- <h1>Funciona 2</h1> -->
-        <!-- <p>{{cita.fecha}}</p>
-                <p>{{con.fecha}}</p> -->
-        @if((cita.fecha | date) == (con.fecha | date)){
-        <!-- <p>{{cita.hora}}</p> -->
-        <!-- <h1>Funciona 3</h1> -->
-    
-        @if(cita.hora==con.hora){
-        <div class="alert alert-warning" role="alert">
-            Horario no disponible, por favor selecciona otro
-        </div>
-        <!-- cambiar por una alerta -->
-        <!-- <ng-container *ngIf="horarionoDisponible();"></ng-container> -->
-        }
-        }
-        }
-        }
-    
-        @if(validacionesNombre(inputNombre)){
-        <div class="alert alert-warning" role="alert">
-            Por favor ingresa un nombre válido
-        </div>
-        }
-    
-        @if(validacionesTelefono(inputTelefono)){
-        <div class="alert alert-warning" role="alert">
-            Por favor ingresa un número de teléfono válido
-        </div>
-        }
-        <!-- <div class="alert alert-info" role="alert">
-            {{cita.hora}}
-        </div> -->
-    </div>
-    
     <div [ngClass]="{ 'con-valor': cita.doctor, 'sin-valor': !cita.doctor }">
         <!-- Si el doctor ya tiene un valor asignado entonces se aplicara un diseño en el que se muestra el doctor
             Si no esta seleccionado el doctor se aplicara otro estilo sin este-->
@@ -87,21 +48,58 @@
                 <p-dropdown class="hora" [options]="horariosDisponibles" [(ngModel)]="cita.hora"></p-dropdown>
     
             </div>
-    
-    
-            <p-floatLabel>
-                <input #inputNombre class="estilos" pInputText id="nombre" [(ngModel)]="cita.nombre" />
-                <label for="nombre">Nombre</label>
-            </p-floatLabel>
-            <p-floatLabel>
-                <input #inputTelefono class="estilos" pInputText id="telefono" [(ngModel)]="cita.telefono" />
-                <label for="telefono">Teléfono</label>
-            </p-floatLabel>
-    
-        </div>
+    <br>
+            <p>
+                <p-floatLabel>
+                    <input #inputNombre class="estilos" pInputText id="nombre" [(ngModel)]="cita.nombre" />
+                    <label for="nombre">Nombre</label>
+                </p-floatLabel>
+            </p>
+            <br>
+            <p>
+                <p-floatLabel>
+                    <input #inputTelefono class="estilos" pInputText id="telefono" [(ngModel)]="cita.telefono" />
+                    <label for="telefono">Teléfono</label>
+                </p-floatLabel>
+            </p>
+
+            <!-- Validacion para que no se pueda seleccionar un horario ocupado -->
+            <div id="AlertaDiv">
+                @for (con of consultas; track cita) {
+                <!-- <h1>Funciona 1</h1> -->
+                    @if(cita.doctor==con.doctor){
+                    <!-- <h1>Funciona 2</h1> -->
+                    <!-- <p>{{cita.fecha}}</p>
+                            <p>{{con.fecha}}</p> -->
+                        @if((cita.fecha | date) == (con.fecha | date)){
+                        <!-- <p>{{cita.hora}}</p> -->
+                        <!-- <h1>Funciona 3</h1> -->
+                            @if(cita.hora==con.hora){
+                            <!-- cambiar por una alerta -->
+                            <ng-container *ngIf="horarionoDisponible();"></ng-container>
+                            <!-- Se manda llamar a la funcion horarionoDisponible que borra el valor de cita.hora
+                            y lanza una alerta al usuario de que seleccione otra fecha -->
+                            }
+                        }
+                    }
+                }
+            
+                @if(cita.nombre!='' && validacionesNombre(inputNombre)){
+                <div class="alert alert-warning" role="alert">
+                    Por favor ingresa un nombre válido
+                </div>
+                }
+            
+                @if(cita.telefono!='' && validacionesTelefono(inputTelefono)){
+                <div class="alert alert-warning" role="alert">
+                    Por favor ingresa un número de teléfono válido
+                </div>
+                }
+            </div>
+    </div>
         
-        <div>
-            @for (d of doctores; track $index) {
+    <div>
+        @for (d of doctores; track $index) {
             @if(cita.doctor==d.nombre){
             <img class="doc" [src]="'../' + d.img" alt="img"><br><br>
             <hr>
@@ -140,12 +138,14 @@
                 </ng-template>
             </p-table>
             }
-            }
-    
-        </div>
+        }
     
     </div>
+    
+    </div>
+    <br>
     <p style="text-align: center;">
         <button type="button" class="btn btn-success" (click)="this.nuevaCita()">Guardar</button>
     </p>
+    
 </div>

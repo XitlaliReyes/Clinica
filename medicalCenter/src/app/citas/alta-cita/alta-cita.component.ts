@@ -132,6 +132,11 @@ export class AltaCitaComponent {
   ];
 
   horarionoDisponible(): void {
+    Swal.fire(
+      '¡Horario no disponible!',
+      'Por favor selecciona otro horario.',
+      'warning'
+    );
     this.cita.hora = '';
   }
 
