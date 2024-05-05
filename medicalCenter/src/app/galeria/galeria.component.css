@@ -13,13 +13,13 @@
 #gallary .card{
     box-shadow: 1px 1px 1px black;
     cursor: pointer;
-    position: relative; /* Para que la superposición (overlay) funcione correctamente */
+    position: relative;
 }
 #gallary .card img{
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.5s ease; /* Transición para el cambio de tamaño */
+    transition: transform 0.5s ease;
 }
 #gallary .overlay{
     opacity: 0;
@@ -32,10 +32,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    transition: opacity 0.5s ease; /* Transición para la aparición */
+    transition: opacity 0.5s ease;
 }
 #gallary .card:hover img{
-    transform: scale(1.1); /* Aumentar el tamaño de la imagen */
+    transform: scale(1.1);
 }
 #gallary .card:hover .overlay{
     opacity: 1;

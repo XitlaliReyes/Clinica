@@ -9,17 +9,17 @@
 }
 
 #product-cards .card {
-    background-color: #2c65c0;
-    box-shadow: 0 0 3px black;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px #2c65c0;
     border-radius: 10px;
     cursor: pointer;
-    position: relative; /* Agregado para el posicionamiento de overlay */
+    position: relative;
 }
 
 #product-cards .card img {
-    max-width: 100%; /* Ancho máximo del 100% */
-    height: auto; /* Altura automática para mantener la proporción */
-    display: block; /* Eliminar espacio adicional */
+    max-width: 100%;
+    height: auto;
+    display: block;
     align-items: center;
     margin: 2px auto;
 }
@@ -40,7 +40,7 @@
 }
 
 .overlay i img {
-    background-color: #7aa7ef;
+    background-color: #2c65c0;
     height: 30px;
     width: 30px;
     font-size: 20px;
@@ -57,8 +57,8 @@
 }
 
 #product-cards h3 {
-    color: white;
-    font-family: monospace;
+    color: #2c65c0;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 30px;
     text-shadow: 1px 1px 1px black;
@@ -66,15 +66,14 @@
 
 #product-cards p {
     color: #000000;
-    font-weight: bold;
     font-size: 15px;
-    font-family: monospace;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
 #product-cards h6 {
     font-size: 20px;
-    color: #000000;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -82,10 +81,11 @@
     width: 100px;
     height: 26px;
     font-size: 15px;
-    background: #ffffff;
+    background: #2c65c0;
+    color: white;
     text-align: center;
-    font-family: monospace;
-    border: 2px solid #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid #2c65c0;
     border-radius: 5px;
     font-weight: bold;
     transition: 0.5s ease;
