@@ -12,6 +12,28 @@ span{
     font-weight: 500;
 }
 
+h1{
+    font-size: 40px;
+    font-weight: bold;
+    color: #2c65c0;
+}
+
+hr{
+    border-bottom: 3px solid #2c65c0;
+    width: 100%;
+}
+
 .btn{
     margin: 30px;
+}
+
+.btn-outline-success{
+    color: #2c65c0;
+    border: 2px solid #2c65c0;
+}
+
+.btn-outline-success:hover{
+    color: white;
+    background-color: #2c65c0;
+    border: 1px solid #2c65c0;
 }
