@@ -9,7 +9,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Autónoma de Aguascalientes",
         especialidad: "Cardiología",
         lugarEspecialidad: "Universidad Nacional Autónoma de México",
-        areasExperiencia: ["Cardiología clínica", "Intervencionismo cardiaco"]
+        areasExperiencia: ["Cardiología clínica", "Intervencionismo cardiaco"],
+        costoconsulta: 800
     },
     {
         cedula: "13245314",
@@ -19,7 +20,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Autonoma de Guadalajara",
         especialidad: "Dermatología",
         lugarEspecialidad: "Universidad Nacional Autónoma de México",
-        areasExperiencia: ["Dermatología clínica", "Dermatología quirúrgica", "Dermatología cosmética"]
+        areasExperiencia: ["Dermatología clínica", "Dermatología quirúrgica", "Dermatología cosmética"],
+        costoconsulta: 600
     },
     {
         cedula: "15643561",
@@ -29,7 +31,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Nacional Autónoma de México",
         especialidad: "Pediatría",
         lugarEspecialidad: "Hospital Infantil de México Federico Gómez",
-        areasExperiencia: ["Pediatría general", "Neonatología"]
+        areasExperiencia: ["Pediatría general", "Neonatología"],
+        costoconsulta: 500
     },
     {
         cedula: "12564668",
@@ -39,7 +42,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Complutense de Madrid",
         especialidad: "Oftalmología",
         lugarEspecialidad: "Hospital Clínico San Carlos, Madrid",
-        areasExperiencia: ["Oftalmología clínica", "Cirugía refractiva", "Glaucoma"]
+        areasExperiencia: ["Oftalmología clínica", "Cirugía refractiva", "Glaucoma"],
+        costoconsulta: 400
     },
     {
         cedula: "11454457",
@@ -49,7 +53,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Autónoma de Barcelona",
         especialidad: "Ginecología",
         lugarEspecialidad: "Hospital Sant Pau, Barcelona",
-        areasExperiencia: ["Ginecología obstétrica", "Endocrinología ginecológica"]
+        areasExperiencia: ["Ginecología obstétrica", "Endocrinología ginecológica"],
+        costoconsulta: 700
     },
     {
         cedula: "15224633",
@@ -59,7 +64,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Autónoma de Buenos Aires",
         especialidad: "Ortopedia",
         lugarEspecialidad: "Hospital Italiano de Buenos Aires",
-        areasExperiencia: ["Ortopedia traumatológica", "Cirugía de reemplazo articular"]
+        areasExperiencia: ["Ortopedia traumatológica", "Cirugía de reemplazo articular"],
+        costoconsulta: 500
     },
     {
         cedula: "11314632",
@@ -69,7 +75,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Autónoma de Madrid",
         especialidad: "Neurología",
         lugarEspecialidad: "Hospital Universitario 12 de Octubre, Madrid",
-        areasExperiencia: ["Neurología clínica", "Neurofisiología"]
+        areasExperiencia: ["Neurología clínica", "Neurofisiología"],
+        costoconsulta: 900
     },
     {
         cedula: "18473920",
@@ -79,7 +86,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad de Chile",
         especialidad: "Endocrinología",
         lugarEspecialidad: "Hospital Clínico de la Universidad de Chile",
-        areasExperiencia: ["Endocrinología clínica", "Diabetes", "Trastornos hormonales"]
+        areasExperiencia: ["Endocrinología clínica", "Diabetes", "Trastornos hormonales"],
+        costoconsulta: 900
     },
     {
         cedula: "19836557",
@@ -89,7 +97,8 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad Nacional Autónoma de México",
         especialidad: "Oncología",
         lugarEspecialidad: "Instituto Nacional de Cancerología, México",
-        areasExperiencia: ["Oncología médica", "Oncología radioterápica"]
+        areasExperiencia: ["Oncología médica", "Oncología radioterápica"],
+        costoconsulta: 1000
     },
     {
         cedula: "12344596",
@@ -99,6 +108,7 @@ export const DOCTORES: Doctor[] = [
         universidad: "Universidad de Sao Paulo",
         especialidad: "Medicina Interna",
         lugarEspecialidad: "Hospital das Clínicas, São Paulo",
-        areasExperiencia: ["Medicina interna general", "Enfermedades infecciosas"]
+        areasExperiencia: ["Medicina interna general", "Enfermedades infecciosas"],
+        costoconsulta: 400
     }
 ];

@@ -25,7 +25,8 @@ export class SearchComponent {
     universidad: "",
     especialidad: "",
     lugarEspecialidad: "",
-    areasExperiencia: []
+    areasExperiencia: [],
+    costoconsulta: 0
   };
 
   constructor(private doctorService: DoctorService, private activatedRoute: ActivatedRoute) { 
