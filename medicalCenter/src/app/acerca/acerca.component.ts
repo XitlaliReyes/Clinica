@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Miembros, MiembrosDesarrollo } from './miembros.interface';
 import { CommonModule } from '@angular/common';
-
+import Masonry from 'masonry-layout';
 @Component({
   selector: 'app-acerca',
   standalone: true,
@@ -9,42 +9,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './acerca.component.html',
   styleUrl: './acerca.component.css'
 })
-export class AcercaComponent implements OnInit {
-  miembrosEquipo: Miembros[] = [];
+export class AcercaComponent implements OnInit, AfterViewInit {
+  @ViewChild('masonryContainer') masonryContainer!: ElementRef;
   miembrosEquipoDesarrollo: MiembrosDesarrollo[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.cargarMiembrosEquipo();
     this.cargarMiembrosEquipoDesarrollo();
   }
 
-  cargarMiembrosEquipo() {
-    this.miembrosEquipo = [
-      {
-        nombre: 'Dra. Felicia Pérez',
-        rol: 'Médico Cirujano',
-        especialidad: 'Cirugía Cardiotorácica',
-        telefono: '88-123-456-789',
-        imagenUrl: 'assets/img_miembrosEquipo/doc3.jpg'
-      },
-      {
-        nombre: 'Dra. María González',
-        rol: 'Pediatra',
-        especialidad: 'Pediatría Neonatal',
-        telefono: '88-987-654-321',
-        imagenUrl: 'assets/img_miembrosEquipo/doc2.jpg'
-      },
-      {
-        nombre: 'Dr. Carlos Rodríguez',
-        rol: 'Oncólogo',
-        especialidad: 'Oncología Pediátrica',
-        telefono: '88-555-555-555',
-        imagenUrl: 'assets/img_miembrosEquipo/doc1.jpg'
-      }
-    ];
-  }
 
   cargarMiembrosEquipoDesarrollo() {
     this.miembrosEquipoDesarrollo = [
@@ -76,4 +50,58 @@ export class AcercaComponent implements OnInit {
     ];
   }
   
+  testimonios = [
+    {
+      titulo: 'Experiencia fantástica',
+      contenido: 'Me encantó la experiencia en este centro médico. El personal fue amable y servicial en todo momento.',
+      autor: 'Luis Rodríguez'
+    },
+    {
+      titulo: 'Trato excepcional',
+      contenido: 'Nunca había recibido una atención tan personalizada como la que recibí aquí. ¡Increíble!',
+      autor: 'Laura García'
+    },
+    {
+      titulo: 'Muy satisfecho con el servicio',
+      contenido: 'Los servicios médicos ofrecidos aquí son de primera calidad. Me siento agradecido por el cuidado que recibí.',
+      autor: 'Carlos Fernández'
+    },
+    {
+      titulo: 'Ambiente acogedor',
+      contenido: 'El ambiente en este centro médico es muy acogedor y relajante. ¡Definitivamente lo recomendaría!',
+      autor: 'Elena López'
+    }
+  ];
+  
+  testimonioColor = 'lightblue';
+  mostrarBorde = true;
+
+  images = [
+
+    { src: 'assets/img_miembrosEquipo/trauma1.jpg', alt: 'Imagen 1' },
+  { src: 'assets/img_miembrosEquipo/lab1.jpg', alt: 'Imagen 2' },
+  { src: 'assets/img_miembrosEquipo/dentist.jpg', alt: 'Imagen 3' },
+  { src: 'assets/img_miembrosEquipo/medicina2.jpg', alt: 'Imagen 4' },
+  { src: 'assets/img_miembrosEquipo/medicina3.jpg', alt: 'Imagen 5' },
+  { src: 'assets/img_miembrosEquipo/dentist2.jpg', alt: 'Imagen 6' },
+  { src: 'assets/img_miembrosEquipo/medicina.jpg', alt: 'Imagen 7' },
+  { src: 'assets/img_miembrosEquipo/lab.jpg', alt: 'Imagen 8' },
+  { src: 'assets/img_miembrosEquipo/lab2.jpg', alt: 'Imagen 9' },
+  { src: 'assets/img_miembrosEquipo/lab3.jpg', alt: 'Imagen 10' }
+  ];
+
+
+
+  ngAfterViewInit(): void {
+    this.initMasonry();
+  }
+  initMasonry(): void {
+    const masonry = new Masonry(this.masonryContainer.nativeElement, {
+      itemSelector: '.masonry-item',
+      columnWidth: '.masonry-sizer',
+      percentPosition: true
+    });
+  }
+  
+
 }
