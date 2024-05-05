@@ -13,37 +13,70 @@ import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-alta-cita',
   standalone: true,
-  imports: [FormsModule, MessagesModule, TableModule, InputTextModule, ButtonModule, CalendarModule, DropdownModule, InputNumberModule, FloatLabelModule, CommonModule],
+  imports: [
+    FormsModule,
+    MessagesModule,
+    TableModule,
+    InputTextModule,
+    ButtonModule,
+    CalendarModule,
+    DropdownModule,
+    InputNumberModule,
+    FloatLabelModule,
+    CommonModule,
+  ],
   templateUrl: './alta-cita.component.html',
-  styleUrl: './alta-cita.component.css'
+  styleUrl: './alta-cita.component.css',
 })
 export class AltaCitaComponent {
   cita!: Cita;
   consultas!: Cita[];
   doctores!: Doctor[];
   porParametro: boolean = false;
-  valor= false;
+  valor = false;
   minDate: Date;
   messages!: any[];
-  
-  constructor(private citasService: CitasService, public activatedRoute: ActivatedRoute){
+
+  constructor(
+    private citasService: CitasService,
+    public activatedRoute: ActivatedRoute,
+    private config: PrimeNGConfig
+  ) {
     this.consultas = this.citasService.getCitas();
     this.minDate = new Date();
   }
-  
-  ngOnInit(){
+
+  ngOnInit() {
+    this.config.setTranslation({
+      dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+      monthNamesShort: [
+        'Ene',
+        'Feb',
+        'Mar',
+        'Abr',
+        'May',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dic',
+      ],
+    });
     this.cita = this.citasService.nuevaCita();
     this.doctores = this.citasService.getDoctores();
-    
-    this.activatedRoute.params.subscribe(params => {
-    // Por default siempre entra a la ruta tenga o no parametros
-    // Sin embargo, al no haber nombre en la ruta, no se asigna el nombre del doctor
-      if(params['nombre'] != null){
+
+    this.activatedRoute.params.subscribe((params) => {
+      // Por default siempre entra a la ruta tenga o no parametros
+      // Sin embargo, al no haber nombre en la ruta, no se asigna el nombre del doctor
+      if (params['nombre'] != null) {
         this.cita.doctor = params['nombre'];
         this.porParametro = true;
       }
@@ -51,28 +84,37 @@ export class AltaCitaComponent {
   }
 
   nuevaCita(): void {
-
     // Verifica si se llena el form
-    if (!this.cita.doctor || !this.cita.fecha || !this.cita.hora || !this.cita.nombre || !this.cita.telefono) {
-      Swal.fire("¡Complete el formulario!", "Por favor complete todos los campos antes de guardar la cita.", "warning");
+    if (
+      !this.cita.doctor ||
+      !this.cita.fecha ||
+      !this.cita.hora ||
+      !this.cita.nombre ||
+      !this.cita.telefono
+    ) {
+      Swal.fire(
+        '¡Complete el formulario!',
+        'Por favor complete todos los campos antes de guardar la cita.',
+        'warning'
+      );
       return;
     }
     //presionar el btn guardar
     Swal.fire({
-      title: "¿Desea guardar los cambios?",
+      title: '¿Desea guardar los cambios?',
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Guardar",
+      confirmButtonText: 'Guardar',
       denyButtonText: 'No Guardar',
-      cancelButtonText: "Cancelar"
+      cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
         this.citasService.agregarCita(this.cita);
         this.cita = this.citasService.nuevaCita();
-        Swal.fire("¡Cita Agendada!", "", "success");
+        Swal.fire('¡Cita Agendada!', '', 'success');
       } else if (result.isDenied) {
         this.cita = this.citasService.nuevaCita();
-        Swal.fire("No se completó la cita", "", "info");
+        Swal.fire('No se completó la cita', '', 'info');
       }
     });
   }
@@ -88,13 +130,9 @@ export class AltaCitaComponent {
     '1:30 - 2:00 PM',
   ];
 
-  horarionoDisponible():void{
-    this.cita.hora= '';
+  horarionoDisponible(): void {
+    this.cita.hora = '';
   }
 
-  estafechallena(dia:Date):any{
-    
-  }
-
-
+  estafechallena(dia: Date): any {}
 }

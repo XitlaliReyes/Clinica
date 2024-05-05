@@ -1,39 +1,70 @@
 <div class="container">
-    <h1>Citas pendientes:</h1>
+
+    @if ( algunaFechaUndefined(fechasFiltro)) {
+    <div class="alert alert-danger" role="alert">
+        Por favor selecciona un rango de fechas completo.
+    </div>
+    }
+    <h3>Filtra por fecha:</h3>
+    <p-calendar [(ngModel)]="fechasFiltro" selectionMode="range" [iconDisplay]="'input'" [showIcon]="true"
+        inputId="icondisplay" />
+
+
+    <h2>Citas pendientes:</h2>
 
     @if (citas.length > 0) {
     <div class="list-group">
         @for (cita of citas; track cita) {
-            @if (fechaPosterior(cita.fecha) ) {
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
-                        <small>Fecha de cita: {{cita.fecha}}</small>
-                    </div>
-                    <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
-                    <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
-                </a>
-            }
+        @if (fechaPosterior(cita.fecha) && fechasFiltro === undefined ) {
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
+            </div>
+            <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
+            <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
+        </a>
+        }@else if (fechaPosterior(cita.fecha) && entreRangos(fechasFiltro, cita.fecha) && fechasFiltro !== undefined)
+        {
+
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
+            </div>
+            <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
+            <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
+        </a>
+        }
         }
     </div>
 
-    <h1>Citas pasadas:</h1>
+    <h2>Citas pasadas:</h2>
 
     <div class="list-group">
         @for (cita of citas; track cita) {
-            @if (!fechaPosterior(cita.fecha) ) {
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
-                        <small>Fecha de cita: {{cita.fecha}}</small>
-                    </div>
-                    <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
-                    <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
-                </a>
-            }
+        @if (!fechaPosterior(cita.fecha) && fechasFiltro === undefined) {
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
+            </div>
+            <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
+            <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
+        </a>
+        }@else if (!fechaPosterior(cita.fecha) && entreRangos(fechasFiltro, cita.fecha) && fechasFiltro !== undefined){
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
+                <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
+            </div>
+            <p class="mb-1">Paciente a atender: {{cita.nombre}}</p>
+            <small>Telefono para contacto: <span class="text-secondary">{{cita.telefono}}</span></small>
+        </a>
+        }
         }
     </div>
     }@else {
-        <p class="text-muted" style="font-size: 24px; text-align: center;">No hay citas pendientes.</p>
+    <p class="text-muted" style="font-size: 24px; text-align: center;">No hay citas pendientes.</p>
     }
 </div>
