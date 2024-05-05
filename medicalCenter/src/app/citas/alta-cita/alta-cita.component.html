@@ -18,28 +18,27 @@
                 <!-- <p-dropdown [options]="doctores" [(ngModel)]="cita.doctor" optionLabel="nombre"></p-dropdown> 
                 Se almacena todo el objeto no guarda solo el nombre del doctor, por lo que no funciona correctamente-->
     
-                <select [(ngModel)]="cita.doctor" class="form-select" aria-label="Default select example">
+                <select [(ngModel)]="cita.doctor" class="form-select" aria-label="Default select example" (ngModelChange)="asignarCosto()">
                     @for (doc of doctores; track $index){
-                    <option value="{{doc.nombre}}">{{doc.nombre}}</option>
+                        <option value="{{doc.nombre}}">{{doc.nombre}}</option>
                     }
                 </select>
                 }
-    
+                
             </div>
             <br>
     
             <p style="text-align: center;">Fecha y hora: </p>
     
             <div class="formulario">
-    
-                <p-calendar class="max-w-full" [(ngModel)]="cita.fecha" [showIcon]="true" [minDate]="minDate">
-                    <ng-template pTemplate="date" let-date>
-                        <span [ngStyle]="{textDecoration: estafechallena(date) ? 'line-through' : 'inherit'}">
-                            {{date.day}}
-                        </span>
-                    </ng-template>
-                </p-calendar>
-    
+
+                <p-calendar 
+                [minDate]="minDate"
+                [(ngModel)]="cita.fecha" 
+                [iconDisplay]="'input'" 
+                [showIcon]="true"
+                inputId="icondisplay"
+                />
                 <!-- falta implementar que si todos los horarios de algun dia estan llenos, 
                     se debe quitar la posiblidad de elegir ese dia tachandolo con un line throug -->
     

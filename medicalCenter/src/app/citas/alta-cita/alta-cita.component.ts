@@ -140,7 +140,15 @@ export class AltaCitaComponent {
     this.cita.hora = '';
   }
 
-  estafechallena(dia: Date): any {}
+  asignarCosto() {
+    const doctorSeleccionado = this.doctores.find(doctor => doctor.nombre === this.cita.doctor);
+    if (doctorSeleccionado) {
+        this.cita.costo = doctorSeleccionado.costoconsulta;
+    } else {
+        this.cita.costo = 0; 
+    }
+}
+
 
   existeAlerta(elementoHTML: any): boolean {
     return elementoHTML.children.length > 0;
