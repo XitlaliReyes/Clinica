@@ -4,6 +4,10 @@ h2 {
     color: #2c65c0;
 }
 
+.container *{
+    margin-top: 10px;
+}
+
 .list-group {
     margin-bottom: 30px;
 }

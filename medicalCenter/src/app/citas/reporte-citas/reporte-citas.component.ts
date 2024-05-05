@@ -67,4 +67,9 @@ export class ReporteCitasComponent {
     // Se verifica si alguna de las fechas es undefined
     // Si lo es se regresa true, si no se regresa false
   }
+
+  tieneHijos(elementoHTML: any): boolean {
+    // Se verifica si el elemento tiene hijos
+    return elementoHTML.children.length > 0;
+  }
 }

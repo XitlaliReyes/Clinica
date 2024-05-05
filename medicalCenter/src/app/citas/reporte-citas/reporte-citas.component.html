@@ -13,10 +13,10 @@
     <h2>Citas pendientes:</h2>
 
     @if (citas.length > 0) {
-    <div class="list-group">
+    <div class="list-group" #citasPendientes>
         @for (cita of citas; track cita) {
         @if (fechaPosterior(cita.fecha) && fechasFiltro === undefined ) {
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+        <a class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span></h5>
                 <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
@@ -39,9 +39,13 @@
         }
     </div>
 
+    @if (!tieneHijos(citasPendientes)) {
+    <p class="text-muted" style="font-size: 24px; text-align: center;">No hay citas pendientes.</p>
+    }
+
     <h2>Citas pasadas:</h2>
 
-    <div class="list-group">
+    <div class="list-group" #citasPasadas>
         @for (cita of citas; track cita) {
         @if (!fechaPosterior(cita.fecha) && fechasFiltro === undefined) {
         <a href="#" class="list-group-item list-group-item-action" aria-current="true">
@@ -64,6 +68,9 @@
         }
         }
     </div>
+    @if (!tieneHijos(citasPasadas)) {
+    <p class="text-muted" style="font-size: 24px; text-align: center;">No hay citas pasadas.</p>
+    }
     }@else {
     <p class="text-muted" style="font-size: 24px; text-align: center;">No hay citas pendientes.</p>
     }
