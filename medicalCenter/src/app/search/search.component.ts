@@ -30,7 +30,6 @@ export class SearchComponent implements OnInit{
     areasExperiencia: [],
     costoconsulta: 0
   };
-
 constructor(
     private doctorService: DoctorService, private activatedRoute: ActivatedRoute, private alertService: AlertService 
 ) {}
@@ -43,11 +42,27 @@ ngOnInit(): void {
           this.alertService.mostrarAlerta('Error', `No se encontraron resultados para ${this.nombred}`, 'error');
           this.alertaMostrada = true;
         } else {
-          this.miDoctor = this.doctorService.getUnDoctor(this.indice);
+          this.mostrarLoading();
+          setTimeout(() => { 
+            this.miDoctor = this.doctorService.getUnDoctor(this.indice);
+            this.cerrarLoading(); 
+          }, 2000);
         }
-    });
-}
-
+      });
+    }
   
+    mostrarLoading(): void {
+      Swal.fire({
+        title: "Estamos buscando al doctor...",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+    }
+  
+    cerrarLoading(): void {
+      Swal.close();
+    }
     
 }

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { MessagesModule } from 'primeng/messages';
+import Swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-alta-cita',
@@ -49,9 +50,31 @@ export class AltaCitaComponent {
     });
   }
 
-  nuevaCita():void{
-    this.citasService.agregarCita(this.cita);
-    this.cita = this.citasService.nuevaCita();
+  nuevaCita(): void {
+
+    // Verifica si se llena el form
+    if (!this.cita.doctor || !this.cita.fecha || !this.cita.hora || !this.cita.nombre || !this.cita.telefono) {
+      Swal.fire("¡Complete el formulario!", "Por favor complete todos los campos antes de guardar la cita.", "warning");
+      return;
+    }
+    //presionar el btn guardar
+    Swal.fire({
+      title: "¿Desea guardar los cambios?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      denyButtonText: 'No Guardar',
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.citasService.agregarCita(this.cita);
+        this.cita = this.citasService.nuevaCita();
+        Swal.fire("¡Cita Agendada!", "", "success");
+      } else if (result.isDenied) {
+        this.cita = this.citasService.nuevaCita();
+        Swal.fire("No se completó la cita", "", "info");
+      }
+    });
   }
 
   horariosDisponibles: string[] = [

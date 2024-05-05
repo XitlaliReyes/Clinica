@@ -16,12 +16,5 @@ export class AlertService {
     });
 }
 
-  mostrarAlertaInfo(mensaje: string): void {
-    Swal.fire({
-      title: 'Información',
-      text: mensaje,
-      icon: 'info',
-      confirmButtonText: 'Aceptar'
-    });
-  }
+  
 }
