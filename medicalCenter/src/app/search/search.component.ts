@@ -27,7 +27,8 @@ export class SearchComponent implements OnInit{
     universidad: "",
     especialidad: "",
     lugarEspecialidad: "",
-    areasExperiencia: []
+    areasExperiencia: [],
+    costoconsulta: 0
   };
 
 constructor(

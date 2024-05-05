@@ -34,7 +34,7 @@ export class CitasService {
       nombre: '',
       telefono: '',
       costo: 0,
-      doctor: ''
+      doctor: '',
     };
   }
 }

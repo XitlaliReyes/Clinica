@@ -7,4 +7,5 @@ export interface Doctor {
     especialidad: string;
     lugarEspecialidad: string;
     areasExperiencia: string[];
+    costoconsulta: number;
 }

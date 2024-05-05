@@ -10,11 +10,14 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CommonModule } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { MessagesModule } from 'primeng/messages';
 
 @Component({
   selector: 'app-alta-cita',
   standalone: true,
-  imports: [FormsModule, ButtonModule, CalendarModule, DropdownModule, InputNumberModule, FloatLabelModule, CommonModule],
+  imports: [FormsModule, MessagesModule, TableModule, InputTextModule, ButtonModule, CalendarModule, DropdownModule, InputNumberModule, FloatLabelModule, CommonModule],
   templateUrl: './alta-cita.component.html',
   styleUrl: './alta-cita.component.css'
 })
@@ -24,9 +27,12 @@ export class AltaCitaComponent {
   doctores!: Doctor[];
   porParametro: boolean = false;
   valor= false;
-
+  minDate: Date;
+  messages!: any[];
+  
   constructor(private citasService: CitasService, public activatedRoute: ActivatedRoute){
     this.consultas = this.citasService.getCitas();
+    this.minDate = new Date();
   }
   
   ngOnInit(){
@@ -58,6 +64,14 @@ export class AltaCitaComponent {
     '1:00 - 1:30 PM',
     '1:30 - 2:00 PM',
   ];
+
+  horarionoDisponible():void{
+    this.cita.hora= '';
+  }
+
+  estafechallena(dia:Date):any{
+    
+  }
 
 
 }
