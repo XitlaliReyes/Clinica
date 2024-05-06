@@ -25,7 +25,14 @@ export class AppComponent {
   recuperarDatos() {
     this.doctorService.obtenerDoctores().subscribe({
       next: this.successRequest.bind(this),
-      error: (err) => console.error('Peticion fallida: ', err)
+      error: (err) =>{ 
+        console.error(`Peticion fallida: ${err};Cambiando pagina`); 
+        this.doctorService.obtenerDoctores2().subscribe({
+          next: this.successRequest.bind(this),
+          error: (err) =>{ 
+            console.error(`Peticion fallida: ${err}; 100 intentos acabados`); 
+          }
+        });}
     });
   }
 
@@ -37,6 +44,5 @@ export class AppComponent {
     // Para modificar el array de doctores, se debe hacer con splice para 
     // DOCTORES = data.doctores; <== Esto no funciona
     // 
-
   }
 }

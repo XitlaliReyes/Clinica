@@ -30,6 +30,10 @@ export class DoctorService {
   }    
 
   obtenerDoctores() {
-    return this.http.get(this.doctoresURL).pipe(take(1))
-  };
+    return this.http.get(this.doctoresURL).pipe(take(1));
+  }
+
+  obtenerDoctores2() {
+    return this.http.get("https://hospitalruspv2.free.beeceptor.com/doctores").pipe(take(1));
+  }
 }
