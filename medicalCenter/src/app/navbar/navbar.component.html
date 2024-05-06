@@ -5,9 +5,17 @@
         PV</a>
 
     <!-- Boton cuando esta responsivo -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span><img src="../../assets/image/menu.png" alt="" width="30px"></span>
-    </button>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../../assets/image/menu.png" alt="" width="30px">
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../home/">Inicio</a></li>
+            <li><a class="dropdown-item" href="../doctores/">Doctores</a></li>
+            <li><a class="dropdown-item" href="../acerca/">Acerca</a></li>
+            <li><a class="dropdown-item" href="../citas/alta-cita/">Nuevas citas</a></li>
+        </ul>
+      </div>
 
     <!-- header links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">

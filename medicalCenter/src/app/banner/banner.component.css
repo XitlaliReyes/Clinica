@@ -11,12 +11,33 @@
     z-index: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+@media screen and (max-width: 940px) {
+    .home .img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .home {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .home {
+        height: 80vh;
+    }
+}
+
 .home .img{
     flex: 1 1 380px;
     animation: floatAnimation 3s infinite alternate;
 }
 .home .img img{
     width: 100%;
+    max-width: 100%; 
+    height: auto; 
 }
 @keyframes floatAnimation {
     0% { transform: translateY(0); }
@@ -33,6 +54,12 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     text-shadow: 1px 1px 1px black;
+    @media screen and (max-width: 800px) {
+        font-size: 50px;
+    }
+    @media screen and (max-width: 330px) {
+        font-size: 30px;
+    }
 }
 .content h2{
     font-size: 60px;
@@ -40,6 +67,9 @@
     text-shadow: 1px 1px 1px black;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+    @media screen and (max-width: 330px) {
+        font-size: 30px;
+    }
 }
 .changecontent::after{
     content: ' ';
@@ -67,6 +97,11 @@
     background-color: #2c65c0;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    @media screen and (max-width: 330px) {
+        width: 90px;
+        height: 32px;
+        font-size: 14px;
+    }
 }
 .content .btn:hover{
     background-color: #1d3e74;
@@ -74,27 +109,4 @@
     border: 2px solid #1d3e74;
     transition: 0.5s ease;
     cursor: pointer;
-}
-@media screen and (max-width:800px){
-    .content h3{
-        font-size: 50px;
-    }
-}
-@media screen and (max-width:860px){
-    .home{
-        height: 120vh;
-    }
-}
-@media screen and (max-width:560px){
-    .home{
-        height: 100vh;
-    }
-}
-@media screen and (max-width:330px){
-    .content h2{
-        font-size: 30px;
-    }
-    .content h3{
-        font-size: 30px;
-    }
 }
