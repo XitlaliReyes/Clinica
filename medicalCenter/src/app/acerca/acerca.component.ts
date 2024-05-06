@@ -73,8 +73,11 @@ export class AcercaComponent implements OnInit, AfterViewInit {
     }
   ];
   
-  testimonioColor = 'lightblue';
+  testimonioColor = '#D7F0FF';
+  testimonioPadding = '10px 20px'
+  testimonioMargin = '15px';
   mostrarBorde = true;
+  testimonioFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;";
 
   images = [
 

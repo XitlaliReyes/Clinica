@@ -11,7 +11,6 @@ import { UndoctorComponent } from './undoctor/undoctor.component';
 
 export const routes: Routes = [
     {path: 'home',component: HomeComponent},
-    // {path: '**', pathMatch: 'full', redirectTo: 'home'}
     {path: 'acerca', component: AcercaComponent},
     {path: 'doctores',component: DoctoresComponent},
     {path: 'alta-cita',component: AltaCitaComponent},
