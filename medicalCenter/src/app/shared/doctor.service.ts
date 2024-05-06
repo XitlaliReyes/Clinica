@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Doctor } from '../doctor';
 import { DOCTORES } from '../misdoctores';
+import { HttpClient } from '@angular/common/http';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
-
+  doctoresURL:string = 'https://hospitalruspv.free.beeceptor.com/doctores';
   private misdoctores: Doctor[] = DOCTORES;
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
 
   getDoctores(): Doctor[] {
     return this.misdoctores;
+  }
+
+  establecerDoctores(doctores: Doctor[]) {
+    this.misdoctores = doctores;
   }
 
   getUnDoctor(id: number): Doctor {
@@ -19,7 +26,10 @@ export class DoctorService {
   }
 
   searchUnDoctor(nombre: string): number {
-
     return this.misdoctores.findIndex(doctor => doctor.nombre === nombre);
   }    
+
+  obtenerDoctores() {
+    return this.http.get(this.doctoresURL).pipe(take(1))
+  };
 }

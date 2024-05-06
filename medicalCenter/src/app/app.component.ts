@@ -3,6 +3,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { DoctorService } from './shared/doctor.service';
+import { DOCTORES } from './misdoctores';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +15,28 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppComponent {
   title = 'medicalCenter';
+
+  constructor(private doctorService: DoctorService) {}
+
+  ngOnInit() {
+    this.recuperarDatos();
+  }
+
+  recuperarDatos() {
+    this.doctorService.obtenerDoctores().subscribe({
+      next: this.successRequest.bind(this),
+      error: (err) => console.error('Peticion fallida: ', err)
+    });
+  }
+
+  successRequest(data: any) {
+    console.log('Peticion exitosa: ', data);
+    DOCTORES.splice(0, DOCTORES.length, ...data.doctores);
+    this.doctorService.establecerDoctores(DOCTORES);
+    console.log('Doctores: ', this.doctorService.getDoctores());
+    // Para modificar el array de doctores, se debe hacer con splice para 
+    // DOCTORES = data.doctores; <== Esto no funciona
+    // 
+
+  }
 }
