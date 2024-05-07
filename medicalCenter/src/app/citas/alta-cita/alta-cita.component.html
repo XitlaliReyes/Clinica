@@ -100,7 +100,7 @@
     <div>
         @for (d of doctores; track $index) {
             @if(cita.doctor==d.nombre){
-            <img class="doc" [src]="'../' + d.img" alt="img"><br><br>
+            <img class="doc" [src]="d.img" alt="img"><br><br>
             <hr>
             <p-table [value]="doctores" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '30rem'}">
                 <ng-template pTemplate="header">
