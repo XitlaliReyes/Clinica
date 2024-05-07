@@ -4,6 +4,7 @@ import { Cita } from '../cita.modle';
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { FormateaFechaPipe } from '../formatea-fecha.pipe';
+import { Doctor } from '../../doctor';
 
 @Component({
   selector: 'app-reporte-citas',
@@ -16,6 +17,8 @@ export class ReporteCitasComponent {
   fechasFiltro!: Date;
   citas!: Cita[];
   fechaActual!: Date;
+  doctores!: Doctor[];
+
 
   constructor(private citasService: CitasService) {
     this.citas = this.citasService.getCitas();
@@ -23,6 +26,7 @@ export class ReporteCitasComponent {
     }
     this.fechaActual = new Date();
     this.fechaActual.setHours(0, 0, 0, 0);
+    this.doctores = this.citasService.getDoctores();
     // Se setean las horas a 0 para que la comparacion de las fechas sea correcta
   }
 
@@ -66,6 +70,14 @@ export class ReporteCitasComponent {
     return false;
     // Se verifica si alguna de las fechas es undefined
     // Si lo es se regresa true, si no se regresa false
+  }
+
+  cita = {
+    costo: 0 // Suponiendo que esto es tu objeto cita con una propiedad costo
+  };
+
+  obtenerCosto(): number {
+    return 500; 
   }
 
   tieneHijos(elementoHTML: any): boolean {

@@ -21,7 +21,11 @@
                 <h5 class="mb-1">
                     Doctor que atenderá: <span class="text-primary">{{cita.doctor}}</span>
                     <br>
-                    Costo de consulta: <span class="text-cost">{{cita.costo}}</span>
+                    @for(d of doctores; track d){
+                        @if(cita.doctor==d.nombre){
+                            Costo consulta: <span class="text-primary">{{d.costoconsulta}}</span>
+                        }
+                    }
                 </h5>
                 <small>Fecha de cita: {{cita.fecha | formateaFecha}} <br> Hora de cita: {{cita.hora}}</small>
             </div>

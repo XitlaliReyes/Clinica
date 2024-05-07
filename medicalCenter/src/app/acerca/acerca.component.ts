@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Miembros, MiembrosDesarrollo } from './miembros.interface';
+import { MiembrosDesarrollo } from './miembros.interface';
 import { CommonModule } from '@angular/common';
 import Masonry from 'masonry-layout';
 @Component({
