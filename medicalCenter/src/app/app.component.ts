@@ -39,10 +39,8 @@ export class AppComponent {
   successRequest(data: any) {
     console.log('Peticion exitosa: ', data);
     DOCTORES.splice(0, DOCTORES.length, ...data.doctores);
-    this.doctorService.establecerDoctores(DOCTORES);
-    console.log('Doctores: ', this.doctorService.getDoctores());
+    this.doctorService.establecerDoctores(data.doctores);
     // Para modificar el array de doctores, se debe hacer con splice para 
     // DOCTORES = data.doctores; <== Esto no funciona
-    // 
   }
 }
