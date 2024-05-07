@@ -26,11 +26,11 @@ export class AppComponent {
     this.doctorService.obtenerDoctores().subscribe({
       next: this.successRequest.bind(this),
       error: (err) =>{ 
-        console.error(`Peticion fallida: ${err};Cambiando pagina`); 
+        console.error(`Peticion fallida ;Cambiando pagina`); 
         this.doctorService.obtenerDoctores2().subscribe({
           next: this.successRequest.bind(this),
           error: (err) =>{ 
-            console.error(`Peticion fallida: ${err}; 100 intentos acabados`); 
+            console.error(`Peticion fallida ; 100 intentos acabados`); 
           }
         });}
     });
