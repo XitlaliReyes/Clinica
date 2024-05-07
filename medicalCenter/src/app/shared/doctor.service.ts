@@ -5,13 +5,13 @@ import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DoctorService {
-  doctoresURL:string = 'https://hospitalruspv3.free.beeceptor.com/doctores';
+  doctoresURL: string = 'https://hospitalruspv3.free.beeceptor.com/doctores';
   private misdoctores: Doctor[] = DOCTORES;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getDoctores(): Doctor[] {
     return this.misdoctores;
@@ -26,14 +26,17 @@ export class DoctorService {
   }
 
   searchUnDoctor(nombre: string): number {
-    return this.misdoctores.findIndex(doctor => doctor.nombre === nombre);
-  }    
+    console.log(`Mis doctores: ${this.misdoctores} y nombre: ${nombre}`);
+    return this.misdoctores.findIndex((doctor) => doctor.nombre === nombre);
+  }
 
   obtenerDoctores() {
     return this.http.get(this.doctoresURL).pipe(take(1));
   }
 
   obtenerDoctores2() {
-    return this.http.get("https://hospitalruspv4.free.beeceptor.com/doctores").pipe(take(1));
+    return this.http
+      .get('https://hospitalruspv4.free.beeceptor.com/doctores')
+      .pipe(take(1));
   }
 }

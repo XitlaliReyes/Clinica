@@ -20,7 +20,7 @@
                     <a class="nav-link" [routerLink]="['/acerca']">Acerca de</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" [routerLink]="['alta-cita']">Nueva Cita</a>
+                    <a class="nav-link" [routerLink]="['alta-cita']">Nueva Cita</a>
                 </li>
             </ul>
             <div class="icons">
@@ -29,10 +29,12 @@
                 </a>
             </div>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Dr. Shaun Murphy..." #buscarTexto
-                    (keyup.enter)="buscarUnDoctor(buscarTexto.value)" aria-label="Search">
-                <button class="btn btn-outline-success" (click)="buscarUnDoctor(buscarTexto.value)"
-                    type="submit">Buscar</button>
+                <input class="form-control me-2" type="search" placeholder="Dr. Shaun Murphy..."
+                #buscarTexto aria-label="Search">
+                
+                <btn class="btn btn-outline-success btn-search" 
+                    [routerLink]="['/buscador', buscarTexto.value]"
+                    type="submit">Buscar</btn>
             </form>
         </div>
     </div>
