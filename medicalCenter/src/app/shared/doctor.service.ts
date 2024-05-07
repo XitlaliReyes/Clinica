@@ -8,7 +8,7 @@ import { take } from 'rxjs';
   providedIn: 'root'
 })
 export class DoctorService {
-  doctoresURL:string = 'https://hospitalruspv3.free.beeceptor.com/doctores';
+  doctoresURL:string = 'https://hospitalruspv2.free.beeceptor.com/doctores';
   private misdoctores: Doctor[] = DOCTORES;
 
   constructor(private http: HttpClient) { }
@@ -34,6 +34,6 @@ export class DoctorService {
   }
 
   obtenerDoctores2() {
-    return this.http.get("https://hospitalruspv4.free.beeceptor.com/doctores").pipe(take(1));
+    return this.http.get("https://hospitalruspv.free.beeceptor.com/doctores").pipe(take(1));
   }
 }
